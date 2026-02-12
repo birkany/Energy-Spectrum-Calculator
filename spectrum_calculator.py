@@ -1,7 +1,7 @@
 import spekpy as sp # Import SpekPy
 import matplotlib.pyplot as plt # Import library for plotting
 
-s = sp.Spek(kvp=70,th=12) # Create a spectrum
+s = sp.Spek(kvp=70, th=12, dk=0.5) # Create a spectrum with custom energy bin width (dk in keV)
 s.filter('Al', 2.8) # Filter the spectrum
 s.filter('Be', 3.0) # Filter the spectrum
 
