@@ -1,7 +1,7 @@
 import spekpy as sp # Import SpekPy
 import matplotlib.pyplot as plt # Import library for plotting
 
-s = sp.Spek(kvp=70, th=12, dk=0.5) # Create a spectrum with custom energy bin width (dk in keV)
+s = sp.Spek(kvp=70, th=12, dk=1.0) # Create a spectrum with custom energy bin width (dk in keV)
 s.filter('Al', 2.8) # Filter the spectrum
 s.filter('Be', 3.0) # Filter the spectrum
 
@@ -16,7 +16,7 @@ k, f = s.get_spectrum(edges=True) # Get the spectrum
 with open('spectrum_data.txt', 'w') as file:
     file.write('Energy(keV)\tFluence(photons/cm2/mAs/keV)\n')
     for energy, fluence in zip(k, f):
-        file.write(f'{energy}\t{fluence}\n')
+        file.write(f'{round(energy*1000)}\t{round(fluence/1000)}\n')
 
 print('Spectrum data saved to spectrum_data.txt')
 
