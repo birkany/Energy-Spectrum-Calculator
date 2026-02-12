@@ -12,6 +12,14 @@ print(hv2,'mm') # Print value to screen
 
 k, f = s.get_spectrum(edges=True) # Get the spectrum
 
+# Write spectrum data to text file
+with open('spectrum_data.txt', 'w') as file:
+    file.write('Energy(keV)\tFluence(photons/cm2/mAs/keV)\n')
+    for energy, fluence in zip(k, f):
+        file.write(f'{energy}\t{fluence}\n')
+
+print('Spectrum data saved to spectrum_data.txt')
+
 plt.plot(k, f) # Plot the spectrum
 plt.xlabel('Energy [keV]')
 plt.ylabel('Fluence per mAs per unit energy [photons/cm2/mAs/keV]')
